@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rage Against the Machine</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<header class="rage">
+    <div class="logo">Rage Against the Machine</div>
+    <nav class="internal-links-r">
+        <a href="../index.html">Strona Główna</a>
+    </nav>
+</header>
+
+<button class="tablink" onclick="openPage('info', this, '#f2f2f2')" id="defaultOpen">Informacje</button>
+<button class="tablink" onclick="openPage('galeria1', this, '#f2f2f2')">Galeria</button>
+
+<div id="info" class="tabcontent">
+    <p class="info-block">
+        Rage Against the Machine (w skrócie: Rage lub RATM) – amerykański zespół rapcore’owy.
+        Muzykę RATM można określić jako mieszankę rapu, hard rocka, punku i funku. Wizytówką zespołu jest charakterystyczny wokal Zacka de la Rocha. Charakteryzuje się rapowymi naleciałościami, jak również stylizacjami wokalnymi opartymi na eksperymentach Toma Morello z brzmieniem gitary. Wizytówką zespołu są teksty które poruszają tematy polityczne. Zespół znany z widowiskowych koncertów, również u boku takich zespołów jak U2 oraz Wu-Tang Clan.</p>
+    <br>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/4Io5vWtmV1rFj4yirKb4y4?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+</div>
+<div id="galeria1" class="tabcontent">
+<section class="info-block">
+    <p>
+        Zespół został założony w Los Angeles w 1991 przez gitarzystę Toma Morello i wokalistę Zacka de la Rocha. Nazwa zespołu pochodzi od tytułu piosenki grupy Inside Out, w której występował de la Rocha. Tom Morello mówiąc o nazwie, powiedział, że maszyną może być wszystko, od policji na ulicach Los Angeles, która katuje kierowców, po władzę, która robi z ludzi bezmyślne roboty.
+    </p>
+</section>
+<section id="galeria" class="galeria">
+
+    <a href="/images/rage1.jpg">
+        <img src="/images/rage1.jpg" alt="Zdjęcie 1">
+    </a>
+    <a href="/images/rage2.jpg">
+        <img src="/images/rage2.jpg" alt="Zdjęcie 2">
+    </a>
+    <a href="/images/rage3.jpg">
+        <img src="/images/rage3.jpg" alt="Zdjęcie 3">
+    </a>
+    <a href="/images/rage4.jpg">
+        <img src="/images/rage4.jpg" alt="Zdjęcie 4">
+    </a>
+
+</section>
+<div class="gallery-full-image-container">
+    <img src="" alt="Pełnowymiarowe zdjęcie" id="full-image">
+    <div class="gallery-nav">
+        <button class="nav-button prev-button">←</button>
+        <button class="nav-button next-button">→</button>
+    </div>
+    <button class="exit-gallery-button">Zamknij galerię</button>
+</div>
+</div>
+
+<footer class="rage">
+    Krystian Dreger 2ta
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const thumbnails = document.querySelectorAll('.galeria a');
+        const fullImageContainer = document.querySelector('.gallery-full-image-container');
+        const fullImage = document.getElementById('full-image');
+        const images = ["/images/rage1.jpg", "/images/rage2.jpg", "/images/rage3.jpg", "/images/rage4.jpg"];
+        let currentImageIndex = 0;
+
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', (event) => {
+                event.preventDefault();
+                fullImage.src = thumbnail.href;
+                currentImageIndex = index;
+                fullImageContainer.style.display = 'block';
+            });
+        });
+
+        const nextButton = document.querySelector('.next-button');
+        const prevButton = document.querySelector('.prev-button');
+        const exitButton = document.querySelector('.exit-gallery-button');
+
+        nextButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            fullImage.src = images[currentImageIndex];
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            fullImage.src = images[currentImageIndex];
+        });
+
+        exitButton.addEventListener('click', () => {
+            fullImageContainer.style.display = 'none';
+        });
+    });
+
+
+    function openPage(pageName,elmnt,color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>

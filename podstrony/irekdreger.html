@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irek Dreger</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<header class="irek">
+    <div class="logo">Irek Dreger</div>
+    <nav class="internal-links-i">
+        <a href="../index.html">Strona Główna</a>
+    </nav>
+</header>
+
+<button class="tablink" onclick="openPage('info', this, '#f2f2f2')" id="defaultOpen">Informacje</button>
+<button class="tablink" onclick="openPage('galeria1', this, '#f2f2f2')">Galeria</button>
+
+<div id="info" class="tabcontent">
+    <p class="info-block">Irek Dreger - polski kompozytor i producent muzyczny.
+
+        Absolwent Akademii Muzycznej im. Fryderyka Chopina w Warszawie, którą ukończył na Wydziale Instrumentów Orkiestrowych w klasie altówki.
+
+        Jako kompozytor, aranżer i producent muzyki działa od roku 1990. Współpracuje z Telewizją Polską S.A., TVN, Polsat, dla których komponuje oprawy muzyczne programów, jingle, czołówki i itp. Autor muzyki do filmów przyrodniczych i dokumentalnych, wielokrotnie nagradzanych na międzynarodowych przeglądach i konkursach, które były prezentowane w wielu stacjach telewizyjnych na całym świecie, m.in. BBC, Discovery, ZDF. Kompozytor wielu piosenek i musicali dla młodzieżowo - dziecięcego zespołu TINTILO. W swoim dorobku artystycznym ma muzykę do wielu reklam telewizyjnych i radiowych.
+
+        W roku 1996 Irek Dreger zainicjował projekt artystyczny - MEDUSA. W latach 1996 - 2002 związany był kontraktem płytowym z firmą Warner Music Poland (WEA), dla której nagrał trzy albumy w ramach tego projektu. W roku 1997 za album "Story" otrzymał nagrodę "Indywidualność Roku".
+
+        W lipcu 1999, MEDUSA została wybrana przez Mike'a Oldfield'a na "support" jego koncertu w Katowickim Spodku.
+
+        W roku 2000 utwór z trzeciej płyty MEDUSA - "Exploration" zatytułowany - "Dream is Real" - długo gościł na czołowych miejscach listy przebojów TOP 20 Klubowych MTV Polska.
+
+        MEDUSA promowała również polską kulturę podczas "EXPO 2000" w Hanowerze.
+
+        W roku 2011 ukazał się czwarty album projektu MEDUSA zatytułowany "Free" wydany przez Interscope</p>
+    <br>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/2lHfGT4azsAC6bFFhq2FMV?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+</div>
+<div id="galeria1" class="tabcontent">
+<section class="info-block">
+    <p>
+        Absolwent Akademii Muzycznej im. Fryderyka Chopina w Warszawie, którą ukończył na Wydziale Instrumentów Orkiestrowych
+        w klasie altówki.
+
+        Jako kompozytor, aranżer i producent muzyki działa od roku 1990. Współpracuje z Telewizją Polską S.A., TVN, Polsat, dla których komponuje oprawy muzyczne programów, jingle, czołówki
+        i itp. Autor muzyki do filmów przyrodniczych
+        i dokumentalnych, wielokrotnie nagradzanych
+        na międzynarodowych przeglądach i konkursach, które były prezentowane w wielu stacjach telewizyjnych na całym świecie, m.in. BBC, Discovery, ZDF. Kompozytor wielu piosenek
+        i musicali dla młodzieżowo - dziecięcego zespołu TINTILO.
+
+        W swoim dorobku artystycznym ma muzykę
+        do wielu reklam telewizyjnych i radiowych.
+        W roku 1996 Irek Dreger zainicjował projekt artystyczny - MEDUSA
+    </p>
+</section>
+<section id="galeria" class="galeria">
+
+    <a href="/images/irekdreger1.jpg">
+        <img src="/images/irekdreger1.jpg" alt="Zdjęcie 1">
+    </a>
+    <a href="/images/irekdreger2.jpg">
+        <img src="/images/irekdreger2.jpg" alt="Zdjęcie 2">
+    </a>
+    <a href="/images/irekdreger3.jpg">
+        <img src="/images/irekdreger3.jpg" alt="Zdjęcie 3">
+    </a>
+    <a href="/images/irekdreger4.jpg">
+        <img src="/images/irekdreger4.jpg" alt="Zdjęcie 4">
+    </a>
+
+</section>
+<div class="gallery-full-image-container" style="display:none;">
+    <img src="" alt="Pełnowymiarowe zdjęcie" id="full-image">
+    <div class="gallery-nav">
+        <button class="nav-button prev-button">←</button>
+        <button class="nav-button next-button">→</button>
+    </div>
+    <button class="exit-gallery-button">Zamknij galerię</button>
+</div>
+</div>
+
+<footer class="irek">
+    Krystian Dreger 2ta
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const thumbnails = document.querySelectorAll('.galeria a');
+        const fullImageContainer = document.querySelector('.gallery-full-image-container');
+        const fullImage = document.getElementById('full-image');
+        const images = ["/images/irekdreger1.jpg", "/images/irekdreger2.jpg", "/images/irekdreger3.jpg", "/images/irekdreger4.jpg"];
+        let currentImageIndex = 0;
+
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', (event) => {
+                event.preventDefault();
+                fullImage.src = thumbnail.href;
+                currentImageIndex = index;
+                fullImageContainer.style.display = 'block';
+            });
+        });
+
+        const nextButton = document.querySelector('.next-button');
+        const prevButton = document.querySelector('.prev-button');
+        const exitButton = document.querySelector('.exit-gallery-button');
+
+        nextButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            fullImage.src = images[currentImageIndex];
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            fullImage.src = images[currentImageIndex];
+        });
+
+        exitButton.addEventListener('click', () => {
+            fullImageContainer.style.display = 'none';
+        });
+    });
+
+
+    function openPage(pageName,elmnt,color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>
