@@ -293,7 +293,7 @@ footer {
 
 
 
-            @media screen and (min-width: 950px) {
+            @media screen and (min-width: 1000px) {
                 .kontener {
                     display: flex;
                     flex-direction: row;
@@ -427,7 +427,7 @@ footer {
 
 
             /* Adjustments for tablet-sized screens */
-            @media screen and (min-width: 601px) and (max-width: 1024px) {
+            @media screen and (min-width: 601px) and (max-width: 1200px) {
                 header {
                     padding: 20px;
                 }
